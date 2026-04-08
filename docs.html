@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Newsletter Platform Documentation - REST API, MCP Server, user roles, installation, configuration, and more.">
+  <title>Docs · Newsletter Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="noise"></div>
+
+  <header class="header">
+    <nav class="nav">
+      <a href="/" class="logo">
+        <span class="logo-icon">✉</span>
+        <span>Newsletter</span>
+      </a>
+      <div class="nav-links">
+        <a href="/docs.html" class="nav-link">Docs</a>
+        <a href="https://github.com/andreapollastri/newsletter" target="_blank" rel="noopener" class="nav-cta">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path
+              d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+          </svg>
+          <span class="nav-cta-text">GitHub</span>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <div class="docs-hero">
+    <h1>Documentation</h1>
+    <p>Everything you need to install, configure, and integrate the Newsletter Platform &mdash; from quick start to
+      advanced AI and API usage.</p>
+  </div>
+
+  <div class="docs-layout">
+    <aside class="docs-sidebar" id="docs-sidebar">
+      <nav>
+        <span class="sidebar-heading">Getting Started</span>
+        <a href="#features">Features</a>
+        <a href="#requirements">Requirements</a>
+        <a href="#installation">Installation</a>
+        <a href="#configuration">Configuration</a>
+        <a href="#quick-start">Quick Start</a>
+
+        <span class="sidebar-heading">Core</span>
+        <a href="#sending">Sending Newsletters</a>
+        <a href="#analytics">Monitoring & Analytics</a>
+        <a href="#rate-limiting">Rate Limiting</a>
+        <a href="#testing-tags">Testing Tags</a>
+        <a href="#multilingual">Multilingual</a>
+        <a href="#public-routes">Public Routes</a>
+
+        <span class="sidebar-heading">Users & Roles</span>
+        <a href="#user-roles">Roles Overview</a>
+        <a href="#permission-matrix">Permission Matrix</a>
+        <a href="#managing-users">Managing Users</a>
+
+        <span class="sidebar-heading">Integrations</span>
+        <a href="#rest-api">REST API</a>
+        <a href="#api-endpoints">API Endpoints</a>
+        <a href="#mcp-server">MCP Server (AI)</a>
+        <a href="#mcp-tools">MCP Tools</a>
+        <a href="#mcp-setup">MCP Setup</a>
+
+        <span class="sidebar-heading">Operations</span>
+        <a href="#scheduled-tasks">Scheduled Tasks</a>
+        <a href="#artisan-commands">Artisan Commands</a>
+        <a href="#production">Production Deploy</a>
+        <a href="#troubleshooting">Troubleshooting</a>
+      </nav>
+    </aside>
+
+    <div class="docs-content">
+      <button class="docs-menu-toggle" id="docs-menu-toggle" aria-label="Toggle navigation">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round">
+          <path d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        Navigation
+      </button>
+
+      <!-- FEATURES -->
+      <section id="features">
+        <h2>Features</h2>
+        <div class="docs-table-wrap">
+          <table class="docs-table">
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Subscriber Management</strong></td>
+                <td>Import/export CSV, tagging, status management</td>
+              </tr>
+              <tr>
+                <td><strong>Campaigns & Messages</strong></td>
+                <td>Hierarchical organization of campaigns and messages</td>
+              </tr>
+              <tr>
+                <td><strong>HTML Templates</strong></td>
+                <td>Customizable templates with placeholder support</td>
+              </tr>
+              <tr>
+                <td><strong>Scheduled Sending</strong></td>
+                <td>Automatic delivery via cron</td>
+              </tr>
+              <tr>
+                <td><strong>Full Tracking</strong></td>
+                <td>Opens, clicks, and unsubscribe tracking</td>
+              </tr>
+              <tr>
+                <td><strong>Targeting</strong></td>
+                <td>Filter recipients by tags and status</td>
+              </tr>
+              <tr>
+                <td><strong>Dashboard</strong></td>
+                <td>Statistics and monitoring widgets</td>
+              </tr>
+              <tr>
+                <td><strong>Rate Limiting</strong></td>
+                <td>Configurable per-minute, per-hour, and per-day limits</td>
+              </tr>
+              <tr>
+                <td><strong>Bounce Detection</strong></td>
+                <td>IMAP integration for bounce processing</td>
+              </tr>
+              <tr>
+                <td><strong>REST API</strong></td>
+                <td>Full CRUD API with Sanctum authentication and OpenAPI docs</td>
+              </tr>
+              <tr>
+                <td><strong>MCP Server</strong></td>
+                <td>AI integration endpoint for Cursor, Claude Code, and other clients</td>
+              </tr>
+              <tr>
+                <td><strong>Testing Tags</strong></td>
+                <td>Mark tags as testing to exclude sends from production statistics</td>
+              </tr>
+              <tr>
+                <td><strong>Multilingual</strong></td>
+                <td>Admin panel in Italian, English, German, French, Spanish, Portuguese</td>
+              </tr>
+              <tr>
+                <td><strong>UTM Tracking</strong></td>
+                <td>Automatic UTM parameters on outbound newsletter links</td>
+              </tr>
+              <tr>
+                <td><strong>User Roles</strong></td>
+                <td>Three permission levels: Editor, Manager, Administrator</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- REQUIREMENTS -->
+      <section id="requirements">
+        <h2>Requirements</h2>
+        <ul>
+          <li><strong>PHP 8.3+</strong></li>
+          <li><strong>Laravel 13</strong></li>
+          <li><strong>Filament 5</strong></li>
+          <li>Database: SQLite, MySQL, or PostgreSQL</li>
+          <li>Queue driver: database, Redis, etc.</li>
+        </ul>
+      </section>
+
+      <!-- INSTALLATION -->
+      <section id="installation">
+        <h2>Installation</h2>
+
+        <h3>1. Clone and install dependencies</h3>
+        <pre><code>git clone https://github.com/andreapollastri/newsletter.git
+cd newsletter
+composer install</code></pre>
+
+        <h3>2. Configure the environment</h3>
+        <pre><code>cp .env.example .env
+php artisan key:generate</code></pre>
+
+        <h3>3. Run migrations</h3>
+        <pre><code>php artisan migrate</code></pre>
+
+        <h3>4. Build frontend assets</h3>
+        <pre><code>npm install
+npm run build</code></pre>
+
+        <h3>5. Create an admin user</h3>
+        <pre><code>php artisan make:filament-user</code></pre>
+
+        <h3>6. Generate API documentation (optional)</h3>
+        <pre><code>php artisan l5-swagger:generate</code></pre>
+      </section>
+
+      <!-- CONFIGURATION -->
+      <section id="configuration">
+        <h2>Configuration</h2>
+
+        <h3>Mail (SMTP)</h3>
+        <p>Configure your SMTP settings in <code>.env</code>:</p>
+        <pre><code>MAIL_MAILER=smtp
+MAIL_HOST=your-smtp-host.com
+MAIL_PORT=587
+MAIL_USERNAME=your-username
+MAIL_PASSWORD=your-password
+MAIL_FROM_ADDRESS="newsletter@yourdomain.com"
+MAIL_FROM_NAME="${APP_NAME}"</code></pre>
+
+        <h3>Newsletter</h3>
+        <div class="docs-table-wrap">
+          <table class="docs-table">
+            <thead>
+              <tr>
+                <th>Variable</th>
+                <th>Description</th>
+                <th>Default</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>NEWSLETTER_TRACKING_ENABLED</code></td>
+                <td>Enable open/click tracking</td>
+                <td><code>true</code></td>
+              </tr>
+              <tr>
+                <td><code>NEWSLETTER_RATE_LIMIT_PER_MINUTE</code></td>
+                <td>Max sends per rolling minute (0 = no cap)</td>
+                <td><code>0</code></td>
+              </tr>
+              <tr>
+                <td><code>NEWSLETTER_RATE_LIMIT_PER_HOUR</code></td>
+                <td>Max sends per rolling hour (0 = no cap)</td>
+                <td><code>0</code></td>
+              </tr>
+              <tr>
+                <td><code>NEWSLETTER_RATE_LIMIT_PER_DAY</code></td>
+                <td>Max sends per rolling day (0 = no cap)</td>
+                <td><code>0</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>IMAP (Bounce Detection)</h3>
+        <p>Optional configuration for processing bounced emails:</p>
+        <pre><code>NEWSLETTER_IMAP_HOST=imap.yourdomain.com
+NEWSLETTER_IMAP_PORT=993
+NEWSLETTER_IMAP_USERNAME=your-username
+NEWSLETTER_IMAP_PASSWORD=your-password
+NEWSLETTER_IMAP_ENCRYPTION=ssl
+NEWSLETTER_IMAP_FOLDER=INBOX</code></pre>
+
+        <h3>API Documentation (Swagger)</h3>
+        <p>Auto-generate the OpenAPI spec on every request in local development:</p>
+        <pre><code>L5_SWAGGER_GENERATE_ALWAYS=true</code></pre>
+        <p>For production, run <code>php artisan l5-swagger:generate</code> during deploy.</p>
+      </section>
+
+      <!-- QUICK START -->
+      <section id="quick-start">
+        <h2>Quick Start</h2>
+        <h3>Seed sample data (optional)</h3>
+        <pre><code>php artisan newsletter:seed-data</code></pre>
+
+        <h3>Start the queue worker</h3>
+        <pre><code>./start-worker.sh</code></pre>
+        <p>Or manually:</p>
+        <pre><code>php artisan queue:work --tries=3 --timeout=90</code></pre>
+
+        <h3>Access the admin panel</h3>
+        <ul>
+          <li><strong>URL:</strong> <code>https://newsletter.test</code> (Laravel Herd) or
+            <code>http://localhost:8000</code>
+          </li>
+          <li><strong>Default credentials</strong> (after seeding): <code>admin@newsletter.test</code> /
+            <code>password</code>
+          </li>
+        </ul>
+      </section>
+
+      <!-- SENDING -->
+      <section id="sending">
+        <h2>Sending Newsletters</h2>
+
+        <h3>Immediate Sending</h3>
+        <ol>
+          <li>Go to <strong>Newsletter &gt; Messages</strong></li>
+          <li>Create a new message or select an existing one</li>
+          <li>Set status to <strong>Ready</strong></li>
+          <li>Click <strong>Send Now</strong></li>
+          <li>Emails are queued and sent automatically via the queue worker</li>
+        </ol>
+
+        <h3>Scheduled Sending</h3>
+        <ol>
+          <li>Create or edit a message</li>
+          <li>Set the <strong>Scheduled Date</strong> field</li>
+          <li>The system sends automatically at the scheduled time (requires cron)</li>
+        </ol>
+      </section>
+
+      <!-- ANALYTICS -->
+      <section id="analytics">
+        <h2>Monitoring & Analytics</h2>
+        <ul>
+          <li><strong>Dashboard:</strong> Main KPIs and send statistics</li>
+          <li><strong>Messages:</strong> Status and send counts per message</li>
+          <li><strong>Message Details:</strong> Individual tracking (opens, clicks) per recipient</li>
+        </ul>
+      </section>
+
+      <!-- RATE LIMITING -->
+      <section id="rate-limiting">
+        <h2>Rate Limiting</h2>
+        <p>Configure how many emails the queue may send using rolling windows (stored in the app cache). Set a variable
+          to <strong>0</strong> to turn off that cap; the other caps still apply.</p>
+        <div class="docs-table-wrap">
+          <table class="docs-table">
+            <thead>
+              <tr>
+                <th>Variable</th>
+                <th>Window</th>
+                <th>Typical use</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>NEWSLETTER_RATE_LIMIT_PER_MINUTE</code></td>
+                <td>~1 min</td>
+                <td>Burst control</td>
+              </tr>
+              <tr>
+                <td><code>NEWSLETTER_RATE_LIMIT_PER_HOUR</code></td>
+                <td>~1 h</td>
+                <td>Provider hourly quotas</td>
+              </tr>
+              <tr>
+                <td><code>NEWSLETTER_RATE_LIMIT_PER_DAY</code></td>
+                <td>~24 h</td>
+                <td>Daily provider caps</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>For each queued send, <code>SendNewsletterEmail</code> checks daily, then hourly, then per-minute limits. The
+          send proceeds only if it fits under every enabled limit; otherwise the job is released with a delay.</p>
+        <p>Example configuration (adjust to your SMTP limits):</p>
+        <pre><code>NEWSLETTER_RATE_LIMIT_PER_MINUTE=0
+NEWSLETTER_RATE_LIMIT_PER_HOUR=1000
+NEWSLETTER_RATE_LIMIT_PER_DAY=10000</code></pre>
+        <p>Check current counters:</p>
+        <pre><code>php artisan newsletter:rate-limits</code></pre>
+      </section>
+
+      <!-- TESTING TAGS -->
+      <section id="testing-tags">
+        <h2>Testing Tags</h2>
+        <p>Tags can be marked as <strong>testing</strong> (<code>is_testing</code> flag) in the admin panel. When a
+          message targets recipients only through testing tags:</p>
+        <ul>
+          <li>Sends are <strong>excluded from dashboard statistics</strong> (emails sent, opens, clicks, bounces,
+            charts)</li>
+          <li>After the send completes, per-recipient send rows and related bounces are <strong>removed</strong> from
+            the database</li>
+          <li>Testing tags and normal tags <strong>cannot be mixed</strong> on the same message</li>
+        </ul>
+        <p>This allows safe end-to-end testing of the sending pipeline without polluting production metrics.</p>
+      </section>
+
+      <!-- MULTILINGUAL -->
+      <section id="multilingual">
+        <h2>Multilingual Support</h2>
+        <p>The admin panel supports six languages: <strong>Italian</strong>, <strong>English</strong>,
+          <strong>German</strong>, <strong>French</strong>, <strong>Spanish</strong>, and
+          <strong>Portuguese</strong>.
+        </p>
+        <ul>
+          <li>Logged-in users can choose their language from the <strong>Profile</strong> page</li>
+          <li>Before login, the panel detects the browser <code>Accept-Language</code> header and uses the closest
+            supported language (defaults to English)</li>
+          <li>New users automatically inherit the browser language on account creation</li>
+        </ul>
+      </section>
+
+      <!-- PUBLIC ROUTES -->
+      <section id="public-routes">
+        <h2>Public Routes</h2>
+        <div class="docs-table-wrap">
+          <table class="docs-table">
+            <thead>
+              <tr>
+                <th>Route</th>
+                <th>Method</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>/subscribe</code></td>
+                <td>GET</td>
+                <td>Subscription form</td>
+              </tr>
+              <tr>
+                <td><code>/subscribe</code></td>
+                <td>POST</td>
+                <td>Process subscription</td>
+              </tr>
+              <tr>
+                <td><code>/subscribe/confirm/{token}</code></td>
+                <td>GET</td>
+                <td>Confirm subscription (double opt-in)</td>
+              </tr>
+              <tr>
+                <td><code>/unsubscribe/{subscriber}</code></td>
+                <td>GET</td>
+                <td>Unsubscribe form</td>
+              </tr>
+              <tr>
+                <td><code>/unsubscribe/{subscriber}/confirm</code></td>
+                <td>POST</td>
+                <td>Confirm unsubscribe</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- USER ROLES -->
+      <section id="user-roles">
+        <h2>User Roles</h2>
+        <p>The application supports three user roles with progressively broader permissions. Every user is assigned
+          exactly one role.</p>
+        <div class="docs-table-wrap">
+          <table class="docs-table">
+            <thead>
+              <tr>
+                <th>Role</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Editor</strong></td>
+                <td>Focused on content creation. Can create and manage <strong>draft</strong> messages within existing
+                  campaigns.</td>
+              </tr>
+              <tr>
+                <td><strong>Manager</strong></td>
+                <td>Full operational access. Manages campaigns, subscribers, tags, templates, and all message
+                  states.</td>
+              </tr>
+              <tr>
+                <td><strong>Administrator</strong></td>
+                <td>Everything a Manager can do, plus <strong>user management</strong> and <strong>API token
+                    management</strong>.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h3>Navigation</h3>
+        <ul>
+          <li><strong>Editor</strong> &mdash; lands on the <strong>Campaigns</strong> page after login; the dashboard is
+            not shown.</li>
+          <li><strong>Manager / Administrator</strong> &mdash; lands on the <strong>Dashboard</strong>; all navigation
+            items are visible according to the permission matrix.</li>
+          <li><strong>User menu</strong> &mdash; the <strong>API Tokens</strong> and <strong>Users</strong> links appear
+            only for Administrators.</li>
+        </ul>
+      </section>
+
+      <!-- PERMISSION MATRIX -->
+      <section id="permission-matrix">
+        <h2>Permission Matrix</h2>
+        <div class="docs-table-wrap">
+          <table class="docs-table">
+            <thead>
+              <tr>
+                <th>Area</th>
+                <th>Editor</th>
+                <th>Manager</th>
+                <th>Administrator</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Dashboard</td>
+                <td class="dash">&mdash;</td>
+                <td class="check">&#10003;</td>
+                <td class="check">&#10003;</td>
+              </tr>
+              <tr>
+                <td>Campaigns (view)</td>
+                <td class="check">&#10003;</td>
+                <td class="check">&#10003;</td>
+                <td class="check">&#10003;</td>
+              </tr>
+              <tr>
+                <td>Campaigns (create/edit/delete)</td>
+                <td class="dash">&mdash;</td>
+                <td class="check">&#10003;</td>
+                <td class="check">&#10003;</td>
+              </tr>
+              <tr>
+                <td>Messages (create)</td>
+                <td class="check">&#10003;</td>
+                <td class="check">&#10003;</td>
+                <td class="check">&#10003;</td>
+              </tr>
+              <tr>
+                <td>Messages (view/edit/delete draft)</td>
+                <td class="check">&#10003;</td>
+                <td class="check">&#10003;</td>
+                <td class="check">&#10003;</td>
+              </tr>
+              <tr>
+                <td>Messages (view sent/sending)</td>
+                <td class="dash">&mdash;</td>
+                <td class="check">&#10003;</td>
+                <td class="check">&#10003;</td>
+              </tr>
+              <tr>
+                <td>Subscribers</td>
+                <td class="dash">&mdash;</td>
+                <td class="check">&#10003;</td>
+                <td class="check">&#10003;</td>
+              </tr>
+              <tr>
+                <td>Tags</td>
+                <td class="dash">&mdash;</td>
+                <td class="check">&#10003;</td>
+                <td class="check">&#10003;</td>
+              </tr>
+              <tr>
+                <td>Templates</td>
+                <td class="dash">&mdash;</td>
+                <td class="check">&#10003;</td>
+                <td class="check">&#10003;</td>
+              </tr>
+              <tr>
+                <td>Users</td>
+                <td class="dash">&mdash;</td>
+                <td class="dash">&mdash;</td>
+                <td class="check">&#10003;</td>
+              </tr>
+              <tr>
+                <td>API Tokens</td>
+                <td class="dash">&mdash;</td>
+                <td class="dash">&mdash;</td>
+                <td class="check">&#10003;</td>
+              </tr>
+              <tr>
+                <td>Newsletter Report API</td>
+                <td class="dash">&mdash;</td>
+                <td class="check">&#10003;</td>
+                <td class="check">&#10003;</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- MANAGING USERS -->
+      <section id="managing-users">
+        <h2>Managing Users</h2>
+        <p>Administrators can create, edit, and delete users from the <strong>Users</strong> page in the admin panel.
+          When creating or editing a user, the following fields are available:</p>
+        <ul>
+          <li><strong>Name</strong> and <strong>Email</strong> (required)</li>
+          <li><strong>Password</strong> (required on create, optional on edit &mdash; leave blank to keep unchanged)
+          </li>
+          <li><strong>Role</strong> &mdash; select Editor, Manager, or Administrator</li>
+          <li><strong>Locale</strong> &mdash; preferred language for the admin panel UI</li>
+        </ul>
+        <p>An administrator cannot delete their own account.</p>
+      </section>
+
+      <!-- REST API -->
+      <section id="rest-api">
+        <h2>REST API</h2>
+        <p>The application exposes a full REST API authenticated via <strong>Laravel Sanctum</strong> personal access
+          tokens. Use it to integrate with CRMs, external dashboards, or any third-party system.</p>
+
+        <h3>Authentication</h3>
+        <ol>
+          <li>Go to the admin panel <strong>user menu &gt; API tokens</strong> (or navigate to
+            <code>/api-tokens</code>)
+          </li>
+          <li>Create a token with the <strong>API</strong> ability enabled</li>
+          <li>Use the token in the <code>Authorization</code> header:</li>
+        </ol>
+        <pre><code>Authorization: Bearer &lt;your-token&gt;</code></pre>
+
+        <h3>OpenAPI Documentation</h3>
+        <p>Interactive Swagger UI is available at <code>/api/documentation</code>. Generate or update the spec with:</p>
+        <pre><code>php artisan l5-swagger:generate</code></pre>
+      </section>
+
+      <!-- API ENDPOINTS -->
+      <section id="api-endpoints">
+        <h2>API Endpoints</h2>
+        <p>All endpoints are prefixed with <code>/api</code> and require a valid Bearer token with the
+          <code>api</code> ability.
+        </p>
+
+        <h3>User</h3>
+        <div class="docs-table-wrap">
+          <table class="docs-table">
+            <thead>
+              <tr>
+                <th>Method</th>
+                <th>Endpoint</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>GET</code></td>
+                <td><code>/api/user</code></td>
+                <td>Authenticated user info</td>
+              </tr>
+              <tr>
+                <td><code>GET</code></td>
+                <td><code>/api/reports/newsletter</code></td>
+                <td>Newsletter report (filterable)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Tags</h3>
+        <div class="docs-table-wrap">
+          <table class="docs-table">
+            <thead>
+              <tr>
+                <th>Method</th>
+                <th>Endpoint</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>GET</code></td>
+                <td><code>/api/tags</code></td>
+                <td>List all tags</td>
+              </tr>
+              <tr>
+                <td><code>POST</code></td>
+                <td><code>/api/tags</code></td>
+                <td>Create a tag</td>
+              </tr>
+              <tr>
+                <td><code>GET</code></td>
+                <td><code>/api/tags/{tag}</code></td>
+                <td>Show a tag</td>
+              </tr>
+              <tr>
+                <td><code>PUT</code></td>
+                <td><code>/api/tags/{tag}</code></td>
+                <td>Update a tag</td>
+              </tr>
+              <tr>
+                <td><code>DELETE</code></td>
+                <td><code>/api/tags/{tag}</code></td>
+                <td>Delete a tag</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Subscribers</h3>
+        <div class="docs-table-wrap">
+          <table class="docs-table">
+            <thead>
+              <tr>
+                <th>Method</th>
+                <th>Endpoint</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>GET</code></td>
+                <td><code>/api/subscribers</code></td>
+                <td>List subscribers</td>
+              </tr>
+              <tr>
+                <td><code>POST</code></td>
+                <td><code>/api/subscribers</code></td>
+                <td>Create a subscriber</td>
+              </tr>
+              <tr>
+                <td><code>GET</code></td>
+                <td><code>/api/subscribers/{subscriber}</code></td>
+                <td>Show a subscriber</td>
+              </tr>
+              <tr>
+                <td><code>PUT</code></td>
+                <td><code>/api/subscribers/{subscriber}</code></td>
+                <td>Update a subscriber</td>
+              </tr>
+              <tr>
+                <td><code>DELETE</code></td>
+                <td><code>/api/subscribers/{subscriber}</code></td>
+                <td>Delete a subscriber</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Templates</h3>
+        <div class="docs-table-wrap">
+          <table class="docs-table">
+            <thead>
+              <tr>
+                <th>Method</th>
+                <th>Endpoint</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>GET</code></td>
+                <td><code>/api/templates</code></td>
+                <td>List templates</td>
+              </tr>
+              <tr>
+                <td><code>POST</code></td>
+                <td><code>/api/templates</code></td>
+                <td>Create a template</td>
+              </tr>
+              <tr>
+                <td><code>GET</code></td>
+                <td><code>/api/templates/{template}</code></td>
+                <td>Show a template</td>
+              </tr>
+              <tr>
+                <td><code>PUT</code></td>
+                <td><code>/api/templates/{template}</code></td>
+                <td>Update a template</td>
+              </tr>
+              <tr>
+                <td><code>DELETE</code></td>
+                <td><code>/api/templates/{template}</code></td>
+                <td>Delete a template</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Campaigns</h3>
+        <div class="docs-table-wrap">
+          <table class="docs-table">
+            <thead>
+              <tr>
+                <th>Method</th>
+                <th>Endpoint</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>GET</code></td>
+                <td><code>/api/campaigns</code></td>
+                <td>List campaigns</td>
+              </tr>
+              <tr>
+                <td><code>POST</code></td>
+                <td><code>/api/campaigns</code></td>
+                <td>Create a campaign</td>
+              </tr>
+              <tr>
+                <td><code>GET</code></td>
+                <td><code>/api/campaigns/{campaign}</code></td>
+                <td>Show a campaign</td>
+              </tr>
+              <tr>
+                <td><code>PUT</code></td>
+                <td><code>/api/campaigns/{campaign}</code></td>
+                <td>Update a campaign</td>
+              </tr>
+              <tr>
+                <td><code>DELETE</code></td>
+                <td><code>/api/campaigns/{campaign}</code></td>
+                <td>Delete a campaign</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Messages (nested under campaigns)</h3>
+        <div class="docs-table-wrap">
+          <table class="docs-table">
+            <thead>
+              <tr>
+                <th>Method</th>
+                <th>Endpoint</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>GET</code></td>
+                <td><code>/api/campaigns/{campaign}/messages</code></td>
+                <td>List messages in a campaign</td>
+              </tr>
+              <tr>
+                <td><code>POST</code></td>
+                <td><code>/api/campaigns/{campaign}/messages</code></td>
+                <td>Create a message</td>
+              </tr>
+              <tr>
+                <td><code>GET</code></td>
+                <td><code>/api/campaigns/{campaign}/messages/{message}</code></td>
+                <td>Show a message</td>
+              </tr>
+              <tr>
+                <td><code>PUT</code></td>
+                <td><code>/api/campaigns/{campaign}/messages/{message}</code></td>
+                <td>Update a message</td>
+              </tr>
+              <tr>
+                <td><code>DELETE</code></td>
+                <td><code>/api/campaigns/{campaign}/messages/{message}</code></td>
+                <td>Delete a message</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- MCP SERVER -->
+      <section id="mcp-server">
+        <h2>MCP Server (AI Integrations)</h2>
+        <p>The application includes a <strong>Model Context Protocol (MCP)</strong> server that allows AI clients
+          (Cursor, Claude Code, Windsurf, etc.) to interact with your newsletter data using natural language.</p>
+
+        <h3>Endpoint</h3>
+        <pre><code>/mcp/newsletter</code></pre>
+        <p>Authenticated with a Sanctum Bearer token that has the <strong>mcp</strong> ability.</p>
+
+        <h3>Prompt</h3>
+        <p>The server ships with a <code>newsletter-assistant</code> prompt &mdash; a reusable skill template that
+          guides AI assistants through campaign planning, report interpretation, content drafting, and message
+          creation.</p>
+      </section>
+
+      <!-- MCP TOOLS -->
+      <section id="mcp-tools">
+        <h2>MCP Tools</h2>
+        <div class="docs-table-wrap">
+          <table class="docs-table">
+            <thead>
+              <tr>
+                <th>Tool</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>list-campaigns</code></td>
+                <td>Lists campaigns (all for managers/administrators; editors see their own)</td>
+              </tr>
+              <tr>
+                <td><code>newsletter-report</code></td>
+                <td>Delivery report with summary, per-message stats, and daily timeseries</td>
+              </tr>
+              <tr>
+                <td><code>send-history-analysis</code></td>
+                <td>Highlights and trends from recent send history</td>
+              </tr>
+              <tr>
+                <td><code>subscriber-insights</code></td>
+                <td>Audience breakdown by tags and statuses</td>
+              </tr>
+              <tr>
+                <td><code>generate-email-template-html</code></td>
+                <td>Generates responsive HTML email template from a description</td>
+              </tr>
+              <tr>
+                <td><code>create-newsletter-message</code></td>
+                <td>Creates a draft or ready message inside a campaign</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Example requests</h3>
+        <p>You can phrase tasks in natural English; the assistant maps them to MCP tools:</p>
+        <ul>
+          <li><strong>Campaigns:</strong> "List all newsletter campaigns." / "What campaigns do we have?"</li>
+          <li><strong>Delivery stats:</strong> "Give me a newsletter delivery report from 2026-01-01 to 2026-01-31."
+          </li>
+          <li><strong>Scoped report:</strong> "Report for campaign id X between 2026-01-01 and 2026-01-31."</li>
+          <li><strong>Narrative summary:</strong> "Summarize send history and highlights for the last quarter."</li>
+          <li><strong>Audience:</strong> "How many subscribers do we have by status? Which tags have the most?"</li>
+          <li><strong>HTML:</strong> "Generate a responsive HTML email template for a product launch."</li>
+          <li><strong>New message:</strong> "Create a draft message in campaign X, using template Y, subject 'Weekly
+            digest'."</li>
+        </ul>
+      </section>
+
+      <!-- MCP SETUP -->
+      <section id="mcp-setup">
+        <h2>MCP Setup</h2>
+        <ol>
+          <li>Create a token in the admin panel with the <strong>MCP</strong> ability</li>
+          <li>Configure your AI client to connect to the MCP endpoint with the token as Bearer auth</li>
+          <li>Debug locally with: <code>php artisan mcp:inspector mcp/newsletter</code></li>
+        </ol>
+
+        <h3>VS Code / Cursor <code>mcp.json</code> example</h3>
+        <p>Point the URL at your app's origin plus <code>/mcp/newsletter</code>, and send the Sanctum token in the
+          <code>Authorization</code> header:
+        </p>
+        <pre><code>{
+    "mcpServers": {
+        "newsletter": {
+            "url": "https://your-domain.example/mcp/newsletter",
+            "headers": {
+                "Authorization": "Bearer YOUR_SANCTUM_TOKEN"
+            }
+        }
+    }
+}</code></pre>
+        <p>Replace <code>your-domain.example</code> with your deployment host (for local development, something like
+          <code>http://127.0.0.1:8000/mcp/newsletter</code>). Replace <code>YOUR_SANCTUM_TOKEN</code> with the
+          plaintext token string from the admin panel.
+        </p>
+      </section>
+
+      <!-- SCHEDULED TASKS -->
+      <section id="scheduled-tasks">
+        <h2>Scheduled Tasks</h2>
+        <p>Add the Laravel scheduler to your crontab:</p>
+        <pre><code>* * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1</code></pre>
+        <div class="docs-table-wrap">
+          <table class="docs-table">
+            <thead>
+              <tr>
+                <th>Task</th>
+                <th>Schedule</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>newsletter:send-scheduled</code></td>
+                <td>Every minute</td>
+                <td>Sends messages with scheduled date in the past</td>
+              </tr>
+              <tr>
+                <td><code>newsletter:process-bounces</code></td>
+                <td>Every 15 minutes</td>
+                <td>Processes bounced emails via IMAP</td>
+              </tr>
+              <tr>
+                <td><code>backup:run</code></td>
+                <td>Daily at 03:00</td>
+                <td>Runs application backup</td>
+              </tr>
+              <tr>
+                <td><code>backup:clean</code></td>
+                <td>Daily at 04:00</td>
+                <td>Cleans old backups</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ARTISAN COMMANDS -->
+      <section id="artisan-commands">
+        <h2>Artisan Commands</h2>
+        <div class="docs-table-wrap">
+          <table class="docs-table">
+            <thead>
+              <tr>
+                <th>Command</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>newsletter:seed-data</code></td>
+                <td>Populate database with sample subscribers, campaigns, and messages</td>
+              </tr>
+              <tr>
+                <td><code>newsletter:send-scheduled</code></td>
+                <td>Manually trigger scheduled message sending</td>
+              </tr>
+              <tr>
+                <td><code>newsletter:process-pending</code></td>
+                <td>Process pending emails in the queue</td>
+              </tr>
+              <tr>
+                <td><code>newsletter:process-bounces</code></td>
+                <td>Process bounced emails from IMAP</td>
+              </tr>
+              <tr>
+                <td><code>newsletter:rate-limits</code></td>
+                <td>Display current rate limit status</td>
+              </tr>
+              <tr>
+                <td><code>l5-swagger:generate</code></td>
+                <td>Generate or update the OpenAPI specification</td>
+              </tr>
+              <tr>
+                <td><code>mcp:inspector mcp/newsletter</code></td>
+                <td>Debug the MCP server locally</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- PRODUCTION -->
+      <section id="production">
+        <h2>Production Deploy</h2>
+        <p>Deploy to any Ubuntu VPS with <a href="https://cipi.sh" target="_blank" rel="noopener">cipi.sh</a> &mdash;
+          an open-source CLI built exclusively for Laravel.</p>
+        <ul>
+          <li>Full app isolation &mdash; own Linux user, PHP-FPM pool & database per app</li>
+          <li>Zero-downtime deploys with instant rollback via Deployer</li>
+          <li>Let's Encrypt SSL, Fail2ban, UFW firewall &mdash; all automated</li>
+          <li>Multi-PHP (7.4 &rarr; 8.5), queue workers, S3 backups, auto-deploy webhooks</li>
+          <li>AI Agent ready &mdash; any AI with SSH access can deploy & manage your server</li>
+        </ul>
+        <pre><code>wget -O - https://raw.githubusercontent.com/andreapollastri/cipi/refs/heads/latest/install.sh | bash</code></pre>
+      </section>
+
+      <!-- TROUBLESHOOTING -->
+      <section id="troubleshooting">
+        <h2>Troubleshooting</h2>
+
+        <h3>Emails not sending</h3>
+        <ol>
+          <li>Ensure the queue worker is running: <code>./start-worker.sh</code> or
+            <code>php artisan queue:work</code>
+          </li>
+          <li>Manually process pending: <code>php artisan newsletter:process-pending</code></li>
+          <li>Check the jobs table: <code>php artisan tinker --execute="DB::table('jobs')->count()"</code></li>
+        </ol>
+
+        <h3>Test email delivery</h3>
+        <pre><code>php artisan tinker --execute="Mail::raw('Test', fn(\$m) => \$m->to('test@example.com'))"</code></pre>
+
+        <h3>Verify rate limits</h3>
+        <pre><code>php artisan newsletter:rate-limits</code></pre>
+
+        <h3>Frontend changes not visible</h3>
+        <p>Run <code>npm run build</code> or <code>npm run dev</code> to compile assets.</p>
+
+        <h3>API issues</h3>
+        <ol>
+          <li>Verify the token is valid: check the <strong>API tokens</strong> page in the admin panel</li>
+          <li>Ensure the token has the correct ability (<code>api</code> for REST endpoints, <code>mcp</code> for the
+            MCP server)</li>
+          <li>Check the OpenAPI docs at <code>/api/documentation</code> for request/response format</li>
+        </ol>
+      </section>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>Created by <a href="https://web.ap.it" target="_blank" rel="noopener">Andrea Pollastri</a> · MIT License</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script async src="https://stats.web.ap.it/i/fd96bd67-38b9-4bac-a25a-99eda590d971.js"></script>
+  <noscript><img src="https://stats.web.ap.it/collect/pixel.gif?k=fd96bd67-38b9-4bac-a25a-99eda590d971&p=/" width="1"
+      height="1" /></noscript>
+</body>
+
+</html>
