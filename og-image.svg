@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Newsletter Platform - Open source newsletter system for Laravel">
+  <defs>
+    <linearGradient id="ogbg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f0f14"/>
+      <stop offset="55%" stop-color="#08080b"/>
+      <stop offset="100%" stop-color="#0a0a10"/>
+    </linearGradient>
+    <radialGradient id="ogglow" cx="75%" cy="20%" r="50%">
+      <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#22d3ee" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="ogglow2" cx="15%" cy="85%" r="45%">
+      <stop offset="0%" stop-color="#0891b2" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#0891b2" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#ogbg)"/>
+  <rect width="1200" height="630" fill="url(#ogglow)"/>
+  <rect width="1200" height="630" fill="url(#ogglow2)"/>
+  <rect x="0" y="0" width="1200" height="630" fill="none" stroke="#ffffff" stroke-opacity="0.06" stroke-width="1"/>
+  <g transform="translate(100 165)">
+    <rect width="300" height="300" rx="48" fill="#14141a" stroke="#22d3ee" stroke-opacity="0.4" stroke-width="3"/>
+    <g transform="translate(54 70)">
+      <path d="M24 48h168c3.3 0 6 2.7 6 6v108c0 3.3-2.7 6-6 6H24c-3.3 0-6-2.7-6-6V54c0-3.3 2.7-6 6-6z" fill="none" stroke="#22d3ee" stroke-width="10" stroke-linejoin="round"/>
+      <path d="M24 48l84 58 84-58" fill="none" stroke="#22d3ee" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </g>
+  <text x="460" y="268" font-family="system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="56" font-weight="800" fill="#e4e4e7" letter-spacing="-0.02em">Newsletter Platform</text>
+  <text x="460" y="338" font-family="system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="28" font-weight="500" fill="#22d3ee">AI-ready &#183; API-first &#183; made with Laravel</text>
+  <text x="460" y="400" font-family="system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="20" font-weight="400" fill="#a1a1aa">Open source newsletter system &#183; REST API &#183; MCP &#183; MIT License</text>
+</svg>

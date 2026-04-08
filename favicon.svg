@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Newsletter Platform">
+  <defs>
+    <linearGradient id="fbg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f0f14"/>
+      <stop offset="100%" stop-color="#08080b"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#fbg)"/>
+  <rect width="512" height="512" rx="112" fill="none" stroke="#22d3ee" stroke-opacity="0.35" stroke-width="6"/>
+  <path d="M128 200h256c8 0 14 6 14 14v168c0 8-6 14-14 14H128c-8 0-14-6-14-14V214c0-8 6-14 14-14z" fill="none" stroke="#22d3ee" stroke-width="20" stroke-linejoin="round"/>
+  <path d="M128 200l128 100 128-100" fill="none" stroke="#22d3ee" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
